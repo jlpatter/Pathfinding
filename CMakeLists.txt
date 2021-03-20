@@ -3,4 +3,4 @@ project(Pathfinding)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Pathfinding main.cpp)
+add_executable(Pathfinding main.cpp Node.h Node.cpp)
