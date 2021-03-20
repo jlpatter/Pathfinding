@@ -5,13 +5,19 @@
 class Node {
 private:
     double x, y;
+    bool visited;
     bool isEnd;
+    Node* parent;
     std::vector<Node*> neighbors;
 public:
     Node(double x, double y, bool isEnd);
     void addNeighbor(Node* n);
+    void setVisited();
+    void setParent(Node* n);
+    Node* getParent();
     Node* getClosest();
     double getDistance(const Node* n) const;
+    bool getVisited() const;
     bool getIsEnd() const;
     void printCoords() const;
 };
@@ -19,7 +25,9 @@ public:
 Node::Node(double x, double y, bool isEnd) {
     this->x = x;
     this->y = y;
+    this->visited = false;
     this->isEnd = isEnd;
+    this->parent = nullptr;
 }
 
 void Node::addNeighbor(Node* n) {
@@ -30,10 +38,12 @@ Node* Node::getClosest() {
     Node* closest = nullptr;
     double closestDistance = 100000;
     for (Node* n : neighbors) {
-        double otherDistance = this->getDistance(n);
-        if (otherDistance < closestDistance) {
-            closest = n;
-            closestDistance = otherDistance;
+        if (!n->getVisited()) {
+            double otherDistance = this->getDistance(n);
+            if (otherDistance < closestDistance) {
+                closest = n;
+                closestDistance = otherDistance;
+            }
         }
     }
     return closest;
@@ -49,6 +59,22 @@ bool Node::getIsEnd() const {
 
 void Node::printCoords() const {
     std::cout << "(" << x << ", " << y << ")" << std::endl;
+}
+
+bool Node::getVisited() const {
+    return visited;
+}
+
+void Node::setVisited() {
+    visited = true;
+}
+
+void Node::setParent(Node *n) {
+    parent = n;
+}
+
+Node *Node::getParent() {
+    return parent;
 }
 
 int main() {
@@ -91,9 +117,18 @@ int main() {
     fiveXThreeY->addNeighbor(fiveXFourY);
 
     auto current = start->getClosest();
+    current->setVisited();
     while (!current->getIsEnd()) {
         current->printCoords();
-        current = current->getClosest();
+        Node* closest = current->getClosest();
+        if (closest == nullptr || closest->getVisited()) {
+            current = current->getParent();
+        }
+        else {
+            closest->setParent(current);
+            current = closest;
+            current->setVisited();
+        }
     }
 
     current->printCoords();
