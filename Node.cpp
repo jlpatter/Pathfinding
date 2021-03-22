@@ -6,6 +6,14 @@
 #include <iostream>
 #include "Node.h"
 
+Node::Node(double x, double y) {
+    this->x = x;
+    this->y = y;
+    this->visited = false;
+    this->isEnd = false;
+    this->parent = nullptr;
+}
+
 Node::Node(double x, double y, bool isEnd) {
     this->x = x;
     this->y = y;

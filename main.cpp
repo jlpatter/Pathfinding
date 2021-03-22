@@ -3,24 +3,24 @@
 #include "Node.h"
 
 int main() {
-    auto* start = new Node(1, 2, false);
-    auto* oneXOneY = new Node(1, 1, false);
-    auto* oneX = new Node(1, 0, false);
-    auto* twoX = new Node(2, 0, false);
-    auto* threeX = new Node(3, 0, false);
+    auto* start = new Node(1, 2);
+    auto* oneXOneY = new Node(1, 1);
+    auto* oneX = new Node(1, 0);
+    auto* twoX = new Node(2, 0);
+    auto* threeX = new Node(3, 0);
 
-    auto* threeXOneY = new Node(3, 1, false);
-    auto* threeXTwoY = new Node(3, 2, false);
-    auto* threeXThreeY = new Node(3, 3, false);
-    auto* threeXFourY = new Node(3, 4, false);
-    auto* twoXFourY = new Node(2, 4, false);
+    auto* threeXOneY = new Node(3, 1);
+    auto* threeXTwoY = new Node(3, 2);
+    auto* threeXThreeY = new Node(3, 3);
+    auto* threeXFourY = new Node(3, 4);
+    auto* twoXFourY = new Node(2, 4);
 
-    auto* fourX = new Node(4, 0, false);
-    auto* fiveX = new Node(5, 0, false);
+    auto* fourX = new Node(4, 0);
+    auto* fiveX = new Node(5, 0);
 
-    auto* fiveXOneY = new Node(5, 1, false);
-    auto* fiveXTwoY = new Node(5, 2, false);
-    auto* fiveXThreeY = new Node(5, 3, false);
+    auto* fiveXOneY = new Node(5, 1);
+    auto* fiveXTwoY = new Node(5, 2);
+    auto* fiveXThreeY = new Node(5, 3);
     auto* fiveXFourY = new Node(5, 4, true);
 
     start->addNeighbor(oneXOneY);

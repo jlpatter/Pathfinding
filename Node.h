@@ -15,6 +15,7 @@ private:
     Node* parent;
     std::vector<Node*> neighbors;
 public:
+    Node(double x, double y);
     Node(double x, double y, bool isEnd);
     void addNeighbor(Node* n);
     void setVisited();
